@@ -214,7 +214,7 @@ function vHome(){const T0=TD(),p=dayProgress(T0),L=lvl(),w=wk(),h=new Date().get
  <h2>عادات اليوم</h2>${S.habits.length?S.habits.map(x=>`<div class="card row ${x.log[T0]?'done':''}">${chk(x.log[T0],'hd',x.id,T0)}<div class="sp tt">${esc(x.title)}</div><span class="mu">${x.type==='weekly'?'أسبوعي':'يومي'}</span></div>`).join(''):`<div class="card empty">لا توجد عادات بعد. أضف عادتك الأولى من تبويب العادات.</div>`}
  <h2>المهام القادمة</h2>${up.length?up.map(t=>`<div class="card row t-${t.pri}">${chk(0,'tt',t.id)}<div class="sp">${esc(t.title)}</div>${isRep(t)?'<span class="tag">🔁 اليوم</span>':''}${t.due?`<span class="tag">${fd(t.due)}</span>`:''}</div>`).join(''):`<div class="card empty">لا توجد مهام معلّقة 🎉</div>`}
  <h2>الأهداف النشطة</h2>${gs.length?gs.map(g=>`<div class="card"><div class="row"><b class="sp">${esc(g.title)}</b><span class="mu">${gp(g)}%</span></div><div style="margin-top:8px">${bar(gp(g))}</div></div>`).join(''):`<div class="card empty">لا توجد أهداف نشطة.</div>`}
- <h2>ملخص الأسبوع</h2><div class="grid"><div class="card"><div class="big">${w.tasks}</div><div class="mu">مهام منجزة</div></div><div class="card"><div class="big">${w.habits}</div><div class="mu">إنجازات عادات</div></div><div class="card"><div class="big">${fm(w.min)}</div><div class="mu">وقت التركيز</div></div><div class="card"><div class="big">${w.xp}</div><div class="mu">نقاط الأسبوع</div></div></div>`}
+ <h2>ملخص الأسبوع</h2><div class="grid"><div class="card"><div class="big">${w.tasks}</div><div class="mu">مهام منجزة</div></div><div class="card"><div class="big">${w.habits}</div><div class="mu">إنجازات عادات</div></div><div class="card"><div class="big">${fm(w.min)}</div><div class="mu">وقت التركيز</div></div><div class="card"><div class="big">${w.xp}</div><div class="mu">نقاط الأسبوع</div></div></div><button class="btn g w" data-act="wg">تحديث Widget</button>`}
 
 function vTasks(){
  let L=S.tasks.filter(t=>(F.st==='all'||(F.st==='rep'?isRep(t):(F.st==='done')===doneOn(t,TD())))&&(F.cat==='all'||t.cat===F.cat));
@@ -250,6 +250,7 @@ function vStats(){const T0=TD(),p=dayProgress(T0),days=wkD(new Date()),w=wk(),L=
 
 const vSettings=()=>`<h1>الإعدادات</h1><div class="card" style="margin-top:12px"><label style="margin-top:0">الاسم</label><input data-s="name" value="${esc(S.name)}" maxlength="30" placeholder="اسمك"><label>بداية الأسبوع</label><select data-s="ws">${opt([['6','السبت'],['0','الأحد'],['1','الاثنين']],String(S.ws))}</select><label>المظهر</label><input value="فاتح" disabled></div>
 <div class="card"><b>البيانات</b><div class="mu">تُحفظ تلقائيًا على جهازك فقط. خذ نسخة احتياطية بين فترة وأخرى.</div><button class="btn w" data-act="ex">تصدير نسخة احتياطية (JSON)</button><button class="btn g w" data-act="im">استيراد نسخة احتياطية</button><button class="btn d w" data-act="rs">حذف كل البيانات</button></div>
+<div class="card"><b>ويدجت الشاشة الرئيسية</b><div class="mu">يُنشئ ملف widget.json (مهام اليوم ونسبة الإنجاز فقط) لتحفظه في iCloud Drive ويقرأه Scriptable. لا يوجد تحديث تلقائي: اضغط الزر بعد تغيير مهامك.</div><button class="btn w" data-act="wg">تحديث Widget</button><button class="btn g w" data-act="wgc">نسخ JSON</button></div>
 <div class="card"><b>فترات المراجعة المتباعدة</b><div class="mu">عدد الأيام بعد إتمام الدرس لكل مراجعة، مفصولة بفواصل (الافتراضي 1، 3، 7، 14، 30).</div><input data-rv="1" value="${S.rv.join('، ')}" style="margin-top:8px"></div>
 <div class="card"><b>حول التطبيق</b><div class="mu">مساحة العزيمة — الإصدار 1.2<br>تطبيق إنتاجية يعمل بدون إنترنت، وبياناتك لا تغادر جهازك.</div></div>`;
 
@@ -486,6 +487,16 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(
 document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset.nq){NQ.q=t.value;render()}
  else if(t.dataset.rv){const a=t.value.split(/[,،\s]+/).filter(Boolean).map(Number);if(!a.length||a.length>10||a.some(x=>!Number.isInteger(x)||x<1||x>365)){toast('أدخل أيامًا صحيحة من 1 إلى 365 مفصولة بفواصل');render();return}S.rv=a;save();toast('تم الحفظ. تسري على المراجعات القادمة');render()}});
+/* ===== تصدير بيانات Widget (Scriptable) ===== */
+function widgetData(){const d=TD(),po={high:0,medium:1,low:2},
+ ts=S.tasks.filter(t=>isRep(t)?sched(t,d):t.due===d).map(t=>({title:String(t.title).slice(0,60),priority:PRI[t.pri]?t.pri:'medium',done:!!doneOn(t,d)}));
+ ts.sort((a,b)=>a.done-b.done||po[a.priority]-po[b.priority]);const done=ts.filter(t=>t.done).length;
+ return{version:1,app:'masahat-alazima',date:d,percent:dayProgress(d).pct,completed:done,remaining:ts.length-done,total:ts.length,tasks:ts}}
+async function wgExport(){const json=JSON.stringify(widgetData(),null,2),file=new File([json],'widget.json',{type:'application/json'});
+ try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file]});toast('اختر «حفظ في الملفات» ثم مجلد Scriptable');return}}catch(e){if(e&&e.name==='AbortError')return}
+ try{const a=document.createElement('a');a.href=URL.createObjectURL(file);a.download='widget.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);toast('نُزّل widget.json. انقله إلى مجلد Scriptable في iCloud Drive')}catch(e){wgCopy()}}
+async function wgCopy(){const j=JSON.stringify(widgetData(),null,2);try{await navigator.clipboard.writeText(j);toast('تم نسخ JSON')}catch(e){modal(`<h2>انسخ النص</h2><textarea rows="10" readonly dir="ltr" onclick="this.select()">${esc(j)}</textarea>`)}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act="wg"],[data-act="wgc"]');if(!b)return;b.dataset.act==='wg'?wgExport():wgCopy()});
 let curDay=TD();const chkDay=()=>{if(TD()!==curDay){curDay=TD();if(!$('#ov'))render()}};setInterval(chkDay,20000);document.addEventListener('visibilitychange',chkDay);
 render();
 </script>
