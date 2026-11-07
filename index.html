@@ -492,13 +492,13 @@ const WG_INCLUDE_UNDATED=true;
 function widgetData(){let fresh=null;try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&Array.isArray(j.tasks))fresh=clean(j)}catch(e){}
  const keep=S;if(fresh)S=fresh;
  try{const d=TD(),po={high:0,medium:1,low:2};
-  const ts=S.tasks.filter(t=>isRep(t)?sched(t,d):(t.due===d||t.doneAt===d||(!t.done&&(t.due?t.due<d:WG_INCLUDE_UNDATED)))).map(t=>({title:String(t.title).slice(0,60),priority:PRI[t.pri]?t.pri:'medium',done:!!doneOn(t,d),due:t.due||'9'}));
-  ts.sort((x,y)=>x.done-y.done||po[x.priority]-po[y.priority]||x.due.localeCompare(y.due));
+  const ts=S.tasks.filter(t=>isRep(t)?sched(t,d):(t.due===d||t.doneAt===d||(!t.done&&(t.due?true:WG_INCLUDE_UNDATED)))).map(t=>({title:String(t.title).slice(0,60),priority:PRI[t.pri]?t.pri:'medium',done:!!doneOn(t,d),due:t.due||'9',g:(isRep(t)||(t.due&&t.due<=d))?0:t.due?1:2}));
+  ts.sort((x,y)=>x.done-y.done||x.g-y.g||po[x.priority]-po[y.priority]||x.due.localeCompare(y.due));
   const out=ts.slice(0,40).map(({title,priority,done})=>({title,priority,done})),dn=out.filter(t=>t.done).length;
   return{version:1,app:'masahat-alazima',date:d,percent:dayProgress(d).pct,completed:dn,remaining:out.length-dn,total:out.length,tasks:out}}finally{S=keep}}
 async function wgExport(){const wd=widgetData(),json=JSON.stringify(wd,null,2),wm=wd.total?'':'تنبيه: القائمة فارغة، لا مهام مستحقة اليوم في هذه النسخة من التطبيق. صدّر من النسخة التي أضفت فيها مهامك',file=new File([json],'widget.json',{type:'application/json'});
- try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file]});toast(wm||'اختر «حفظ في الملفات» ثم مجلد Scriptable');return}}catch(e){if(e&&e.name==='AbortError')return}
- try{const a=document.createElement('a');a.href=URL.createObjectURL(file);a.download='widget.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);toast(wm||'نُزّل widget.json. انقله إلى مجلد Scriptable في iCloud Drive')}catch(e){wgCopy()}}
+ try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file]});toast(wm||(wd.total+' مهمة ('+wd.remaining+' متبقية). اختر «حفظ في الملفات» ثم مجلد Scriptable'));return}}catch(e){if(e&&e.name==='AbortError')return}
+ try{const a=document.createElement('a');a.href=URL.createObjectURL(file);a.download='widget.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);toast(wm||('نُزّل widget.json ('+wd.total+' مهمة، '+wd.remaining+' متبقية). انقله إلى مجلد Scriptable'))}catch(e){wgCopy()}}
 async function wgCopy(){const j=JSON.stringify(widgetData(),null,2);try{await navigator.clipboard.writeText(j);toast('تم نسخ JSON')}catch(e){modal(`<h2>انسخ النص</h2><textarea rows="10" readonly dir="ltr" onclick="this.select()">${esc(j)}</textarea>`)}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act="wg"],[data-act="wgc"]');if(!b)return;b.dataset.act==='wg'?wgExport():wgCopy()});
 let curDay=TD();const chkDay=()=>{if(TD()!==curDay){curDay=TD();if(!$('#ov'))render()}};setInterval(chkDay,20000);document.addEventListener('visibilitychange',chkDay);
