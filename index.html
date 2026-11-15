@@ -94,9 +94,9 @@ const KEY='grit_space_v1',$=s=>document.querySelector(s);
 const CATS=['عمل','دراسة','صحة','شخصي','أخرى'],PRI={high:'عالية',medium:'متوسطة',low:'منخفضة'},PER={weekly:'أسبوعي',monthly:'شهري',yearly:'سنوي'};
 const DS=['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
 const MOT=['خطوة صغيرة كل يوم تصنع فرقًا كبيرًا.','ابدأ بأصعب مهمة ثم استمتع ببقية اليوم.','الاستمرار أهم من الكمال.','ركّز على التقدّم لا على السرعة.','عاداتك اليوم تصنع نسختك القادمة.','ما تبدأه اليوم يشكرك عليه غدًا.','جلسة تركيز واحدة قد تغيّر يومك.'];
-const I={hm:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',tk:'M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9',hb:'M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3',gl:'M12 3a9 9 0 1 0 9 9M12 7a5 5 0 1 0 5 5M12 12l8-8',fc:'M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z',st:'M4 20V10M10 20V4M16 20v-8M22 20H2',se:'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0M14 4v4M8 10v4M16 16v4',pl:'M12 5v14M5 12h14',ed:'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z',tr:'M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14',ck:'M5 12l5 5L20 7',cl:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',nt:'M6 3h9l4 4v14H6zM15 3v4h4M9 12h6M9 16h6',mn:'M4 7h16M4 12h16M4 17h16',pj:'M3 7h18v13H3zM8 7V4h8v3',rw:'M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z'};
+const I={hm:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',tk:'M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9',hb:'M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3',gl:'M12 3a9 9 0 1 0 9 9M12 7a5 5 0 1 0 5 5M12 12l8-8',fc:'M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z',st:'M4 20V10M10 20V4M16 20v-8M22 20H2',se:'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0M14 4v4M8 10v4M16 16v4',pl:'M12 5v14M5 12h14',ed:'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z',tr:'M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14',ck:'M5 12l5 5L20 7',cl:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',nt:'M6 3h9l4 4v14H6zM15 3v4h4M9 12h6M9 16h6',mn:'M4 7h16M4 12h16M4 17h16',pj:'M3 7h18v13H3zM8 7V4h8v3',as:'M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z',rw:'M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z'};
 const ic=(n,s=22)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${I[n]}"/></svg>`;
-const TABS=[['home','الرئيسية','hm'],['tasks','المهام','tk'],['habits','العادات','hb'],['goals','الأهداف','gl'],['projects','المشاريع','pj'],['rewards','المكافآت','rw'],['plan','التخطيط','cl'],['notes','الملاحظات','nt'],['focus','التركيز','fc'],['stats','الإحصاءات','st'],['settings','الإعدادات','se']];
+const TABS=[['home','الرئيسية','hm'],['tasks','المهام','tk'],['habits','العادات','hb'],['goals','الأهداف','gl'],['projects','المشاريع','pj'],['rewards','المكافآت','rw'],['assistant','المساعد','as'],['plan','التخطيط','cl'],['notes','الملاحظات','nt'],['focus','التركيز','fc'],['stats','الإحصاءات','st'],['settings','الإعدادات','se']];
 const MAIN=['home','tasks','plan','focus'];
 $('#nav').innerHTML=TABS.filter(t=>MAIN.includes(t[0])).map(t=>`<button data-tab="${t[0]}">${ic(t[2],21)}<span>${t[1]}</span></button>`).join('')+`<button data-more="1">${ic('mn',21)}<span>المزيد</span></button>`;
 
@@ -113,7 +113,7 @@ const fm=m=>m>=60?Math.floor(m/60)+' س '+(m%60)+' د':m+' د';
 const opt=(a,v)=>a.map(([k,l])=>`<option value="${k}" ${k===v?'selected':''}>${l}</option>`).join('');
 
 /* ---------- البيانات ---------- */
-const def=()=>({v:3,name:'',ws:6,tasks:[],habits:[],goals:[],awarded:{},focus:{sessions:0,minutes:0,log:{},hist:[]},subjects:[],plans:[{id:'p1',name:'جدولي'}],curPlan:'p1',sess:[],busy:[],notes:[],projects:[],exams:[],rw:[],rl:[],ch:[],gmOff:false,rq:null,rv:[1,3,7,14,30],org:{from:'16:00',to:'21:00',gap:10,dur:45}});
+const def=()=>({v:3,name:'',ws:6,tasks:[],habits:[],goals:[],awarded:{},focus:{sessions:0,minutes:0,log:{},hist:[]},subjects:[],plans:[{id:'p1',name:'جدولي'}],curPlan:'p1',sess:[],busy:[],notes:[],projects:[],exams:[],rw:[],rl:[],ch:[],gmOff:false,asOff:false,rq:null,rv:[1,3,7,14,30],org:{from:'16:00',to:'21:00',gap:10,dur:45}});
 function clean(r){const d=def();if(!r||typeof r!=='object')return d;
  const A=x=>Array.isArray(x)?x.filter(o=>o&&typeof o==='object'&&o.id):[];
  d.name=typeof r.name==='string'?r.name.slice(0,30):'';
@@ -132,7 +132,7 @@ function clean(r){const d=def();if(!r||typeof r!=='object')return d;
  d.rw=A(r.rw).map(x=>({id:x.id,t:String(x.t||'').slice(0,60),cost:Math.min(10000,Math.max(1,Math.round(+x.cost)||1))})).filter(x=>x.t);
  d.rl=A(r.rl).map(x=>({id:x.id,rid:x.rid||'',t:String(x.t||'').slice(0,60),cost:Math.max(0,Math.round(+x.cost)||0),d:x.d||ymd(new Date())})).slice(-200);
  d.ch=A(r.ch).filter(c=>['tasks','habits','focus','study','ms'].includes(c.type)&&/^\d{4}-\d\d-\d\d$/.test(c.start||'')).map(c=>({id:c.id,type:c.type,target:Math.min(9999,Math.max(1,Math.round(+c.target)||1)),xp:Math.min(100,Math.max(5,Math.round(+c.xp)||5)),start:c.start})).slice(-60);
- d.gmOff=!!r.gmOff;
+ d.gmOff=!!r.gmOff;d.asOff=!!r.asOff;
  d.projects=A(r.projects).map(p=>({...p,title:String(p.title||'').slice(0,80),desc:String(p.desc||'').slice(0,300),status:['active','paused','done'].includes(p.status)?p.status:'active',start:p.start||null,due:p.due||null,notes:String(p.notes||'').slice(0,3000),ms:Array.isArray(p.ms)?p.ms.filter(m=>m&&m.id).map(m=>({id:m.id,t:String(m.t||'').slice(0,80),done:!!m.done,at:m.at||null})).slice(0,40):[],created:p.created||ymd(new Date())}));
  d.rq=Array.isArray(r.rq)&&r.rq.length?r.rq.map(x=>String(x).slice(0,120)).filter(Boolean).slice(0,8):null;
  d.subjects=A(r.subjects).map(x=>({...x,name:String(x.name||''),lessons:(Array.isArray(x.lessons)?x.lessons:[]).filter(l=>l&&l.id).map(l=>({...l,t:String(l.t||''),st:['new','prog','done'].includes(l.st)?l.st:'new',pri:PRI[l.pri]?l.pri:'medium',note:String(l.note||''),next:l.next||null,revs:Array.isArray(l.revs)?l.revs.filter(q=>q&&q.d):[],created:l.created||ymd(new Date())}))}));
@@ -145,9 +145,11 @@ function clean(r){const d=def();if(!r||typeof r!=='object')return d;
  d.rv=Array.isArray(r.rv)&&r.rv.length&&r.rv.length<=10&&r.rv.every(x=>+x>=1&&+x<=365)?r.rv.map(x=>Math.round(+x)):[1,3,7,14,30];
  d.v=3;
  return d}
-function load(){try{const raw=localStorage.getItem(KEY),j=JSON.parse(raw);try{if(raw&&!localStorage.getItem(KEY+'_pre_habits'))localStorage.setItem(KEY+'_pre_habits',raw)}catch(e){}if(j&&(j.v||1)<2&&!localStorage.getItem(KEY+'_v1_backup'))localStorage.setItem(KEY+'_v1_backup',raw);if(j&&(j.v||1)<3&&!localStorage.getItem(KEY+'_v2_backup'))localStorage.setItem(KEY+'_v2_backup',raw);return clean(j)}catch(e){return def()}}
+function load(){try{const raw=localStorage.getItem(KEY),j=JSON.parse(raw);try{if(raw&&!localStorage.getItem(KEY+'_pre_habits'))localStorage.setItem(KEY+'_pre_habits',raw)}catch(e){}if(j&&(j.v||1)<2&&!localStorage.getItem(KEY+'_v1_backup'))localStorage.setItem(KEY+'_v1_backup',raw);if(j&&(j.v||1)<3&&!localStorage.getItem(KEY+'_v2_backup'))localStorage.setItem(KEY+'_v2_backup',raw);return clean(j)}catch(e){try{const r0=localStorage.getItem(KEY);if(r0&&!localStorage.getItem(KEY+'_corrupt'))localStorage.setItem(KEY+'_corrupt',r0)}catch(x){}return def()}}
 let S=load(),tab='home',F={st:'all',cat:'all',sort:'deadline'};
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('تعذّر الحفظ، قد يكون التخزين معطّلًا')}}
+function save(){const d=JSON.stringify(S),ts=Date.now();let ok=true;try{localStorage.setItem(KEY,d);localStorage.setItem(KEY+'_ts',String(ts))}catch(e){ok=false}
+ if(typeof IDB!=='undefined'&&IDB){IDB.pend={d,ts};idbQueue()}
+ if(!ok&&!(typeof IDB!=='undefined'&&IDB&&IDB.ok))toast('تعذّر الحفظ، قد يكون التخزين معطّلًا')}
 function uid(){const used=new Set([...S.tasks,...S.habits,...S.goals,...S.goals.flatMap(g=>g.ms),...S.sess,...S.subjects,...S.subjects.flatMap(x=>x.lessons),...S.plans,...S.busy,...S.focus.hist,...S.notes,...S.tasks.flatMap(x=>x.subs||[]),...S.projects,...S.projects.flatMap(p=>p.ms),...S.exams,...S.rw,...S.rl,...S.ch].map(x=>x.id));let i;do{i=Date.now().toString(36)+Math.random().toString(36).slice(2,6)}while(used.has(i));return i}
 let tm;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tm);tm=setTimeout(()=>t.classList.remove('on'),2200)}
 
@@ -242,6 +244,7 @@ function vHome(){const T0=TD(),p=dayProgress(T0),L=lvl(),w=wk(),h=new Date().get
  quick:()=>`<div class="row" style="margin:10px 0;gap:8px"><button class="btn sp" data-act="nt">+ مهمة</button><button class="btn g sp" data-act="nh">+ عادة</button></div>`,
  plan:()=>`${planHome()}${revHome()}`,
  exams:()=>exW(),
+ assist:()=>asW(),
  focus:()=>`<div class="card row"><div class="sp"><b>التركيز</b><div class="mu">اليوم: ${fm(S.focus.log[T0]||0)} • الجلسات: ${S.focus.sessions}${T.run?' • جلسة جارية':''}</div></div><button class="btn sm" data-act="goTab" data-id="focus">${T.run?'فتح':'▶ ابدأ'}</button></div>`,
  level:()=>S.gmOff?'':`<div class="card"><div class="row"><b class="sp">المستوى ${L.n}</b><span class="mu">${L.x} نقطة</span></div><div style="margin-top:8px">${bar(L.cur)}</div></div>`,
  habits:()=>`<h2>عادات اليوم</h2>${hList(T0).length?hList(T0).map(hMini).join(''):`<div class="card empty">لا توجد عادات بعد. أضف عادتك الأولى من تبويب العادات.</div>`}`,
@@ -287,12 +290,14 @@ const vSettings=()=>`<h1>الإعدادات</h1><div class="card" style="margin-
 <div class="card"><b>البيانات</b><div class="mu">تُحفظ تلقائيًا على جهازك فقط. خذ نسخة احتياطية بين فترة وأخرى.</div><button class="btn w" data-act="ex">تصدير نسخة احتياطية (JSON)</button><button class="btn g w" data-act="im">استيراد نسخة احتياطية</button><button class="btn d w" data-act="rs">حذف كل البيانات</button></div>
 ${dashUI()}
 <div class="card"><b>ويدجت الشاشة الرئيسية</b><div class="mu">يُنشئ ملف widget.json (مهام اليوم ونسبة الإنجاز فقط) لتحفظه في iCloud Drive ويقرأه Scriptable. لا يوجد تحديث تلقائي: اضغط الزر بعد تغيير مهامك.</div><button class="btn w" data-act="wg">تحديث Widget</button><button class="btn g w" data-act="wgc">نسخ JSON</button></div>
+${idbUI()}
+<div class="card"><b>المساعد الذكي</b><div class="mu">يعرض أولويات مقترحة في الرئيسية. يعمل محليًا على بياناتك.</div><button class="btn ${S.asOff?'':'g'} w" data-act="as:tgl">${S.asOff?'تفعيل عنصر المساعد في الرئيسية':'إخفاء عنصر المساعد من الرئيسية'}</button></div>
 <div class="card"><b>الحوافز</b><div class="mu">النقاط والمستويات والمكافآت والتحديات. عند التعطيل لا تُمنح نقاط جديدة وتُخفى الواجهة، ولا يُحذف شيء.</div><button class="btn ${S.gmOff?'':'g'} w" data-act="gm:tg">${S.gmOff?'تفعيل الحوافز':'تعطيل الحوافز'}</button></div>
 <div class="card"><b>أسئلة التأمل اليومي</b><div class="mu">سؤال في كل سطر (حتى 8). اتركها فارغة لاستعادة الأسئلة الافتراضية.</div><textarea data-rq="1" rows="4" style="margin-top:8px">${esc(rqGet().join('\n'))}</textarea></div>
 <div class="card"><b>فترات المراجعة المتباعدة</b><div class="mu">عدد الأيام بعد إتمام الدرس لكل مراجعة، مفصولة بفواصل (الافتراضي 1، 3، 7، 14، 30).</div><input data-rv="1" value="${S.rv.join('، ')}" style="margin-top:8px"></div>
 <div class="card"><b>حول التطبيق</b><div class="mu">مساحة العزيمة — الإصدار 1.4<br>تطبيق إنتاجية يعمل بدون إنترنت، وبياناتك لا تغادر جهازك.</div></div>`;
 
-function render(){chCheck();const v={home:vHome,tasks:vTasks,habits:vHabits,goals:vGoals,projects:vProjects,rewards:vRewards,focus:vFocus,plan:vPlan,notes:vNotes,stats:vStats,settings:vSettings}[tab]();
+function render(){chCheck();const v={home:vHome,tasks:vTasks,habits:vHabits,goals:vGoals,projects:vProjects,rewards:vRewards,assistant:vAssist,focus:vFocus,plan:vPlan,notes:vNotes,stats:vStats,settings:vSettings}[tab]();
  $('main').innerHTML=v+((tab==='plan'&&PL.sub==='sch')?`<button class="btn fab" data-act="p:ns" aria-label="حصة جديدة">${ic('pl',26)}</button>`:(tab==='home'||tab==='tasks')?`<button class="btn fab" data-act="nt" aria-label="مهمة جديدة">${ic('pl',26)}</button>`:'');
  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab||(!!b.dataset.more&&!MAIN.includes(tab))));if(tab==='focus')paint()}
 
@@ -343,7 +348,7 @@ document.addEventListener('click',e=>{
  else if(a==='te'){tEnd();return}
  else if(a==='ex'){exp();return}
  else if(a==='im'){$('#imp').click();return}
- else if(a==='rs'){if(!confirm('سيتم حذف كل بياناتك نهائيًا. هل أنت متأكد؟')||!confirm('تأكيد أخير: لا يمكن التراجع. حذف كل شيء؟'))return;S=def();toast('تم حذف البيانات')}
+ else if(a==='rs'){if(!confirm('سيتم حذف كل بياناتك نهائيًا. هل أنت متأكد؟')||!confirm('تأكيد أخير: لا يمكن التراجع. حذف كل شيء؟'))return;S=def();idbWipe();toast('تم حذف البيانات')}
  else ch=0;
  if(ch){save();render()}});
 document.addEventListener('change',e=>{const t=e.target;
@@ -848,8 +853,8 @@ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if
 themeApply();
 /* ===== الأولوية 1: عروض المهام + تخصيص الرئيسية ===== */
 const TV={v:'all',cd:TD(),sel:null};
-const DW={quick:'إضافة سريعة',progress:'تقدّم اليوم',plan:'التخطيط والمراجعات',exams:'الاختبارات والمواعيد',focus:'التركيز',level:'المستوى',habits:'عادات اليوم',tasks:'المهام القادمة',goals:'الأهداف النشطة',week:'ملخص الأسبوع'};
-const DK='grit_dash_v1',DDEF=['progress','quick','plan','exams','focus','level','habits','tasks','goals','week'];
+const DW={quick:'إضافة سريعة',progress:'تقدّم اليوم',plan:'التخطيط والمراجعات',exams:'الاختبارات والمواعيد',assist:'أولويات المساعد',focus:'التركيز',level:'المستوى',habits:'عادات اليوم',tasks:'المهام القادمة',goals:'الأهداف النشطة',week:'ملخص الأسبوع'};
+const DK='grit_dash_v1',DDEF=['progress','quick','plan','assist','exams','focus','level','habits','tasks','goals','week'];
 function dashGet(){let o=[],h=[];try{const j=JSON.parse(localStorage.getItem(DK))||{};o=Array.isArray(j.order)?j.order.filter((k,i,a)=>DW[k]&&a.indexOf(k)===i):[];h=Array.isArray(j.hide)?j.hide.filter(k=>DW[k]):[]}catch(e){}
  DDEF.forEach(k=>{if(!o.includes(k))o.push(k)});return{order:o,hide:h}}
 function dashSave(d){try{localStorage.setItem(DK,JSON.stringify(d))}catch(e){toast('تعذّر حفظ ترتيب الرئيسية')}}
@@ -1002,8 +1007,120 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-act^="ex:"
  else if(a==='rw:dele'){if(confirm('حذف المكافأة؟')){S.rw=S.rw.filter(r=>r.id!==id);save();render()}}
  else if(a==='rw:buy'){const r=S.rw.find(x=>x.id===id);if(!r)return;if(xpAvail()<r.cost){toast('نقاطك غير كافية');return}if(!confirm('استبدال «'+r.t+'» بـ '+r.cost+' نقطة؟'))return;S.rl.push({id:uid(),rid:r.id,t:r.t,cost:r.cost,d:TD()});S.rl=S.rl.slice(-200);save();render();toast('تم الاستبدال. استمتع بمكافأتك!')}
  else if(a==='gm:tg'){S.gmOff=!S.gmOff;save();render();toast(S.gmOff?'عُطّلت الحوافز':'فُعّلت الحوافز')}});
+/* ===== التخزين الدائم: IndexedDB (نسخة دائمة + نسخ يومية) مع localStorage كذاكرة سريعة ===== */
+var IDB={ok:false,st:'جارٍ التحضير…',list:[],persist:null,t:null,pend:null,ts:0};
+const IDBN='grit_space_db',lsTs=()=>+(localStorage.getItem(KEY+'_ts'))||0;
+function idbOpen(){return new Promise((res,rej)=>{if(typeof indexedDB==='undefined'||!indexedDB)return rej(new Error('unsupported'));let r;try{r=indexedDB.open(IDBN,1)}catch(e){return rej(e)}
+ r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('state'))d.createObjectStore('state',{keyPath:'id'});if(!d.objectStoreNames.contains('backups'))d.createObjectStore('backups',{keyPath:'id'})};
+ r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error||new Error('open failed'));r.onblocked=()=>rej(new Error('blocked'))})}
+const idr=r=>new Promise((res,rej)=>{r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error||new Error('request failed'))});
+const idt=t=>new Promise((res,rej)=>{t.oncomplete=()=>res();t.onerror=()=>rej(t.error||new Error('tx error'));t.onabort=()=>rej(t.error||new Error('tx aborted'))});
+async function idbWrite(data,ts){const db=await idbOpen();try{const t=db.transaction(['state','backups'],'readwrite'),st=t.objectStore('state'),bk=t.objectStore('backups'),day='d'+TD();
+  st.put({id:'main',ts,v:3,data});const g=bk.get(day);g.onsuccess=()=>{if(!g.result)bk.put({id:day,ts,data})};await idt(t);
+  const t2=db.transaction('backups','readwrite'),s2=t2.objectStore('backups'),all=s2.getAll();all.onsuccess=()=>{const days=(all.result||[]).filter(b=>/^d\d{4}/.test(b.id)).map(b=>b.id).sort().reverse();days.slice(7).forEach(k=>s2.delete(k))};await idt(t2)}finally{db.close()}}
+async function idbBackup(id,data,ts){const db=await idbOpen();try{const t=db.transaction('backups','readwrite'),s=t.objectStore('backups');s.put({id,ts,data});
+  if(/^m\d/.test(id)){const all=s.getAll();all.onsuccess=()=>{(all.result||[]).filter(b=>/^m\d/.test(b.id)).map(b=>b.id).sort().reverse().slice(5).forEach(k=>s.delete(k))}}await idt(t)}finally{db.close()}}
+async function idbList(){try{const db=await idbOpen();try{const all=await idr(db.transaction('backups').objectStore('backups').getAll());IDB.list=(all||[]).map(b=>({id:b.id,ts:b.ts})).sort((a,b)=>b.ts-a.ts)}finally{db.close()}}catch(e){}}
+function idbQueue(){if(typeof IDB==='undefined'||!IDB.ok)return;clearTimeout(IDB.t);IDB.t=setTimeout(idbFlush,500)}
+async function idbFlush(){if(!IDB.ok||IDB.pend==null)return;const data=IDB.pend.d,ts=IDB.pend.ts;try{await idbWrite(data,ts);IDB.ts=ts;IDB.st='محفوظ';await idbList()}catch(e){IDB.st='تعذّر الحفظ في IndexedDB'}}
+async function idbGetMain(){const db=await idbOpen();try{return await idr(db.transaction('state').objectStore('state').get('main'))}finally{db.close()}}
+function idbAdopt(rec,msg){S=clean(JSON.parse(rec.data));try{localStorage.setItem(KEY,rec.data);localStorage.setItem(KEY+'_ts',String(rec.ts))}catch(e){}IDB.st='محفوظ';render();toast(msg)}
+async function idbPushNow(){IDB.pend={d:JSON.stringify(S),ts:lsTs()||Date.now()};await idbFlush()}
+async function idbReconcile(){const rec=await idbGetMain(),raw=localStorage.getItem(KEY);let okL=false;try{const j=JSON.parse(raw);okL=!!j&&Array.isArray(j.tasks)}catch(e){}
+ const lts=lsTs();let rj=null;try{rj=rec&&rec.data&&JSON.parse(rec.data)}catch(e){}
+ if(!rj||!Array.isArray(rj.tasks)){if(okL)await idbPushNow();else IDB.st='محفوظ';return}
+ if(!okL){idbAdopt(rec,'استُعيدت بياناتك من التخزين الاحتياطي (IndexedDB)');return}
+ if(lts>0&&rec.ts>lts+1000){await idbBackup('pre-sync',raw,lts);idbAdopt(rec,'حُدّثت بياناتك من نسخة IndexedDB الأحدث');return}
+ if(lts===0&&rec.data!==raw)await idbBackup('pre-sync',rec.data,rec.ts);
+ await idbPushNow()}
+async function idbInit(){try{const d=await idbOpen();d.close();IDB.ok=true}catch(e){IDB.st='IndexedDB غير متاح هنا، ويعمل التطبيق بـ localStorage فقط';return}
+ try{if(navigator.storage&&navigator.storage.persisted){IDB.persist=await navigator.storage.persisted();if(!IDB.persist&&navigator.storage.persist)IDB.persist=await navigator.storage.persist()}}catch(e){}
+ try{await idbReconcile()}catch(e){IDB.st='تعذّرت المزامنة: '+e.message}
+ await idbList();if(tab==='settings')render()}
+async function idbWipe(){['_v1_backup','_v2_backup','_pre_habits','_corrupt'].forEach(k=>{try{localStorage.removeItem(KEY+k)}catch(e){}});IDB.pend=null;clearTimeout(IDB.t);
+ try{const db=await idbOpen();try{const t=db.transaction(['state','backups'],'readwrite');t.objectStore('state').clear();t.objectStore('backups').clear();await idt(t)}finally{db.close()}}catch(e){}IDB.list=[]}
+const bkLabel=b=>b.id[0]==='d'?'يومية '+fd(b.id.slice(1)):b.id[0]==='m'?'يدوية '+new Date(b.ts).toLocaleString('ar-u-nu-latn',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):b.id==='pre-sync'?'قبل المزامنة':b.id==='pre-restore'?'قبل آخر استعادة':b.id;
+function idbUI(){return `<div class="card"><b>التخزين والنسخ التلقائي</b><div class="mu">تُحفظ بياناتك في localStorage (سريع) ونسخة دائمة في IndexedDB، مع نسخة يومية لآخر 7 أيام.</div>
+ <div class="row" style="padding:4px 0"><span class="sp">IndexedDB</span><b>${IDB.ok?'متاح':'غير متاح'}</b></div><div class="row" style="padding:4px 0"><span class="sp">الحالة</span><span class="mu">${esc(IDB.st)}</span></div>
+ <div class="row" style="padding:4px 0"><span class="sp">تخزين دائم (يقلل خطر مسح iOS للبيانات)</span><span class="mu">${IDB.persist===true?'مُفعّل':IDB.persist===false?'غير مضمون':'—'}</span></div>
+ <button class="btn g w" data-act="bk:now" ${IDB.ok?'':'disabled'}>أنشئ نسخة احتياطية الآن</button>
+ ${IDB.list.slice(0,8).map(b=>`<div class="row" style="padding:5px 0"><span class="sp">${esc(bkLabel(b))}</span><button class="btn sm g" data-act="bk:rs" data-id="${esc(b.id)}">استعادة</button></div>`).join('')}</div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act^="bk:"]');if(!b)return;const a=b.dataset.act,id=b.dataset.id;
+ if(a==='bk:now'){idbBackup('m'+Date.now(),JSON.stringify(S),Date.now()).then(idbList).then(()=>{toast('تم إنشاء نسخة احتياطية');if(tab==='settings')render()}).catch(()=>toast('تعذّر إنشاء النسخة'))}
+ else if(a==='bk:rs'){(async()=>{try{const db=await idbOpen();let rec;try{rec=await idr(db.transaction('backups').objectStore('backups').get(id))}finally{db.close()}
+   if(!rec||!rec.data)return toast('النسخة غير موجودة');let j;try{j=JSON.parse(rec.data)}catch(x){return toast('النسخة تالفة')}if(!j||!Array.isArray(j.tasks))return toast('النسخة غير صالحة');
+   if(!confirm('سيتم استبدال بياناتك الحالية بنسخة '+bkLabel(rec)+'. تُحفظ نسختك الحالية أولًا باسم «قبل آخر استعادة». متابعة؟'))return;
+   await idbBackup('pre-restore',JSON.stringify(S),Date.now());S=clean(j);save();await idbList();render();toast('تمت الاستعادة')}catch(x){toast('تعذّرت الاستعادة')}})()}});
+/* ===== المساعد الذكي (منطق محلي مبني على بياناتك، بدون نموذج لغوي) ===== */
+const AS={q:'',a:null,day:0};
+const AQ=['ماذا أبدأ به اليوم؟','كم مهمة أنجزت هذا الأسبوع؟','كم ركزت هذا الأسبوع؟','ما أكثر عادة منتظمة؟','ما أقل عادة التزامًا؟','ما المهام المتأخرة؟','ما الاختبارات القادمة؟','كم نقطة ومستوى؟'];
+function asRank(){const T0=TD();return S.tasks.filter(t=>isRep(t)?(sched(t,T0)&&!t.log[T0]):!t.done).map(t=>{let sc={high:30,medium:15,low:5}[t.pri]||15;const why=[];if(t.pri==='high')why.push('أولوية عالية');
+ if(isRep(t)){sc+=18;why.push('متكررة اليوم')}else if(t.due){const d=Math.ceil((pd(t.due)-pd(T0))/864e5);if(d<0){sc+=40+Math.min(20,-d*3);why.push('متأخرة '+(-d)+' يوم')}else if(d===0){sc+=35;why.push('موعدها اليوم')}else if(d<=2){sc+=20;why.push('موعدها بعد '+d+' يوم')}else if(d<=7)sc+=8}
+ const pp=(t.ph||[]).length;if(pp){sc+=Math.min(15,pp*5);why.push('أُجّلت '+pp+' مرات')}if(t.gid||t.pid){sc+=6;why.push('مرتبطة بهدف أو مشروع')}return{t,sc,why}}).sort((a,b)=>b.sc-a.sc)}
+function asPlan(day){const dt=ymd(addD(new Date(),day)),O=S.org,from=tmn(O.from),to=tmn(O.to),gap=O.gap,w0=pd(dt).getDay();
+ const used=[...occ(dt,null).map(o=>[tmn(o.x.start),tmn(o.x.start)+o.x.dur]),...S.busy.filter(b=>b.day===w0).map(b=>[tmn(b.from),tmn(b.to)])];
+ const start=day===0?Math.max(from,Math.ceil(nowMin()/15)*15):from,items=[],placed=[];
+ asRank().filter(x=>!isRep(x.t)).slice(0,3).forEach(x=>items.push({k:'task',t:x.t.title,dur:30,why:x.why}));
+ revDue().slice(0,2).forEach(o=>items.push({k:'rev',t:o.l.t,subj:o.s.id,less:o.l.id,dur:20,why:['مراجعة مستحقة']}));
+ let skip=0;items.forEach(it=>{let ok=false;for(let s=start;s+it.dur<=to;s+=5){if(used.every(u=>s>=u[1]+gap||s+it.dur+gap<=u[0])){used.push([s,s+it.dur]);placed.push({...it,s,start:mth(s)});ok=true;break}}if(!ok)skip++});
+ placed.sort((a,b)=>a.s-b.s);return{dt,placed,skip,closed:day===0&&start+20>to}}
+function asOverload(){const O=S.org,win=tmn(O.to)-tmn(O.from),days=[...Array(7)].map((_,i)=>ymd(addD(new Date(),i))),
+ L=days.map(d=>{const os=occ(d,null),m=os.reduce((a,o)=>a+o.x.dur,0),tk=S.tasks.filter(t=>!isRep(t)&&!t.done&&t.due===d).length;let ov=false;for(let i=0;i<os.length;i++)for(let j=i+1;j<os.length;j++)if(tmn(os[j].x.start)<tmn(os[i].x.start)+os[i].x.dur&&tmn(os[i].x.start)<tmn(os[j].x.start)+os[j].x.dur)ov=true;return{d,m,tk,ov,sc:m/Math.max(win,60)+tk/6}}),lt=[...L].sort((a,b)=>a.sc-b.sc)[0],out=[];
+ L.forEach(x=>{const r=[];if(win>0&&x.m>win*.9)r.push('جلسات '+fm(x.m)+' تقترب من كامل وقت الدراسة ('+fm(win)+')');if(x.tk>=5)r.push(x.tk+' مهام مستحقة');if(x.ov)r.push('حصص متداخلة');if(r.length)out.push({d:x.d,why:r,to:lt&&lt.d!==x.d?lt.d:null})});return out}
+function asHabits(){const T0=TD(),days=anDays({from:ymd(addD(new Date(),-13)),to:T0});AN.obs=null;return S.habits.filter(h=>!h.arch).map(h=>anHabit(h,days)).filter(o=>o.rate!==null&&o.n>=5&&o.rate<.5)}
+function asGoals(){const T0=TD();return S.goals.map(g=>({g,p:gp(g),dl:g.date?Math.ceil((pd(g.date)-pd(T0))/864e5):null})).filter(x=>x.p<100&&x.dl!==null&&(x.dl<0||(x.dl<=14&&x.p<50)))}
+const asNorm=q=>String(q).replace(/[\u064B-\u065F\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[؟?!.،,]/g,' ').toLowerCase();
+function asPer(n){const T0=TD();if(/اليوم/.test(n))return{l:'اليوم',days:[T0]};if(/امس/.test(n))return{l:'أمس',days:[ymd(addD(new Date(),-1))]};if(/الاسبوع (الماضي|السابق)/.test(n))return{l:'الأسبوع الماضي',days:wkD(addD(new Date(),-7))};
+ if(/الشهر/.test(n))return{l:'هذا الشهر',days:[...Array(+T0.slice(8))].map((_,i)=>T0.slice(0,8)+p2(i+1))};return{l:'هذا الأسبوع',days:wkD(new Date())}}
+function asAsk(q){const n=asNorm(q),T0=TD(),per=asPer(n),c=wrCore(per.days),hs=S.habits.filter(h=>!h.arch),lst=a=>a.map(x=>'• '+x).join('\n');
+ if(!n.trim())return'اكتب سؤالك أولًا.';
+ if(/(ماذا|ما|بماذا).*(ابدا|افعل|اولويه|اولويات)|ابدا|اولويات/.test(n)){const r=asRank().slice(0,3);return r.length?'أعلى أولوياتك الآن:\n'+lst(r.map(x=>x.t.title+(x.why.length?' ('+x.why.join('، ')+')':''))):'لا مهام مفتوحة مسجّلة.'}
+ if(/خطه|جدول اليوم/.test(n)){const p=asPlan(0);return p.placed.length?'خطة مقترحة اليوم (المدد تقديرية):\n'+lst(p.placed.map(i=>i.start+' '+i.t)):'لا مكان متاح في وقت الدراسة اليوم.'}
+ if(/(كم|عدد).*(مهمه|مهام)|(مهام|مهمه).*(انجزت|منجز)|انجزت/.test(n)&&!/عاد/.test(n))return 'أنجزتَ '+(c.done.length+c.rcnt)+' مهمة '+per.l+(c.rcnt?' (منها '+c.rcnt+' من المتكررة)':'')+'، حسب سجلاتك.';
+ if(/ركزت|تركيز|ساعات|دقائق|دقايق/.test(n))return 'سجّلتَ '+fm(c.fmin)+' تركيزًا '+per.l+(c.fs?' في '+c.fs+' جلسة مكتملة':'')+'.';
+ if(/(اقل|اسوا|ضعيف|مهمل).*عاد|عاد.*(اقل|اسوا|ضعيف)/.test(n)){const r=hs.map(h=>({h,p:hRate(h,30)})).sort((a,b)=>a.p-b.p).slice(0,3);return r.length?'الأقل التزامًا (آخر 30 يومًا):\n'+lst(r.map(x=>x.h.title+' — '+x.p+'%')):'لا عادات نشطة.'}
+ if(/(اكثر|افضل|منتظم).*عاد|عاد.*(منتظم|افضل|اكثر)|منتظمه/.test(n)){const r=hs.map(h=>({h,p:hRate(h,30)})).sort((a,b)=>b.p-a.p).slice(0,3);return r.length?'الأكثر انتظامًا (آخر 30 يومًا):\n'+lst(r.map(x=>x.h.title+' — '+x.p+'%')):'لا عادات نشطة.'}
+ if(/سلسله|streak|متتال/.test(n)){const r=hs.map(h=>({h,s:hSt(h)})).sort((a,b)=>b.s.cur-a.s.cur).slice(0,3);return r.length?'أطول سلاسلك الحالية:\n'+lst(r.map(x=>x.h.title+' — '+x.s.cur+(x.h.type==='weekly'?' أسبوع':' يوم'))):'لا عادات نشطة.'}
+ if(/عاد/.test(n)&&/اليوم/.test(n)){const L=hList(T0);return L.length?'عادات اليوم: '+L.filter(h=>h.log[T0]).length+' منجزة من '+L.length+'.':'لا عادات مستحقة اليوم.'}
+ if(/متاخر|فات موعد|تاخر/.test(n)){const od=S.tasks.filter(t=>!isRep(t)&&!t.done&&t.due&&t.due<T0).sort(cmpD);return od.length?'لديك '+od.length+' مهام متأخرة:\n'+lst(od.slice(0,5).map(t=>t.title+' ('+fd(t.due)+')')):'لا مهام متأخرة مسجّلة.'}
+ if(/اجل|تاجيل|مؤجل/.test(n)){const r=S.tasks.filter(t=>!t.done&&(t.ph||[]).length).sort((a,b)=>b.ph.length-a.ph.length).slice(0,5);return r.length?'أكثر المهام تأجيلًا:\n'+lst(r.map(t=>t.title+' — '+t.ph.length+' مرات')):'لا تأجيلات مسجّلة.'}
+ if(/اختبار|امتحان|واجب|تسليم/.test(n)){const r=S.exams.filter(e=>!e.done&&e.date>=T0).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);return r.length?'القادم:\n'+lst(r.map(e=>exName(e)+' — '+exLbl(e))):'لا مواعيد دراسية قادمة مسجّلة.'}
+ if(/مراجع/.test(n)){const r=revDue();return r.length?r.length+' مراجعات مستحقة:\n'+lst(r.slice(0,5).map(o=>o.l.t+' ('+o.s.name+')')):'لا مراجعات مستحقة الآن.'}
+ if(/هدف|اهداف/.test(n)){const r=S.goals.filter(g=>gp(g)<100);return r.length?'أهدافك النشطة:\n'+lst(r.slice(0,5).map(g=>g.title+' — '+gp(g)+'%')):'لا أهداف نشطة.'}
+ if(/نقاط|نقطه|مستوي|xp|مستواي/.test(n)){const L=lvl();return S.gmOff?'الحوافز معطّلة.':'مستواك '+L.n+'، وإجمالي ما كسبته '+L.x+' نقطة، والمتاح للاستبدال '+xpAvail()+'.'}
+ return null}
+function asContext(){const T0=TD(),w=wrCore(wkD(new Date())),L=[];L.push('ملخص بيانات إنتاجيتي ('+T0+') — بدون نصوص الملاحظات');
+ L.push('مهام مفتوحة: '+S.tasks.filter(t=>!isRep(t)&&!t.done).length+' • متأخرة: '+S.tasks.filter(t=>!isRep(t)&&!t.done&&t.due&&t.due<T0).length);
+ L.push('هذا الأسبوع: مهام منجزة '+(w.done.length+w.rcnt)+' • تركيز '+fm(w.fmin)+' • التزام العادات '+(w.hp==null?'لا بيانات':w.hp+'%'));
+ S.habits.filter(h=>!h.arch).forEach(h=>L.push('عادة: '+h.title+' — التزام 30 يومًا '+hRate(h,30)+'% • سلسلة '+hSt(h).cur));
+ S.goals.filter(g=>gp(g)<100).forEach(g=>L.push('هدف: '+g.title+' — '+gp(g)+'%'));
+ S.exams.filter(e=>!e.done&&e.date>=T0).slice(0,5).forEach(e=>L.push('موعد: '+exName(e)+' — '+e.date));
+ return L.join('\n')}
+function asW(){if(S.asOff)return'';const r=asRank().slice(0,3);if(!r.length)return'';return `<h2>أولويات مقترحة</h2>`+r.map(x=>`<div class="card row t-${x.t.pri}"><div class="sp"><b>${esc(x.t.title)}</b><div class="mu">${esc(x.why.join(' • ')||'مفتوحة')}</div></div></div>`).join('')+`<div class="mu" style="text-align:center" data-act="goTab" data-id="assistant">فتح المساعد ←</div>`}
+function vAssist(){const rk=asRank().slice(0,5),pl=asPlan(AS.day),ov=asOverload(),nh=asHabits(),gr=asGoals(),pp=S.tasks.filter(t=>!t.done&&(t.ph||[]).length>=2).slice(0,3),rv=revDue(),wk=wrCore(wkD(new Date()));
+ const al=[];ov.forEach(x=>al.push(`<b>${DSF[pd(x.d).getDay()]} ${fd(x.d)}</b> مزدحم: ${x.why.join('، ')}${x.to?'. الأخف: '+DSF[pd(x.to).getDay()]+' '+fd(x.to):''}`));
+ nh.forEach(o=>al.push(`عادة <b>${esc(o.h.title)}</b>: التزام ${Math.round(o.rate*100)}% في آخر 14 يومًا (${o.n} بنود مسجّلة). فكّر في خفض هدفها أو تغيير وقتها.`));
+ pp.forEach(t=>al.push(`مهمة <b>${esc(t.title)}</b> أُجّلت ${t.ph.length} مرات. قسّمها إلى خطوات أصغر.`));
+ gr.forEach(x=>al.push(`هدف <b>${esc(x.g.title)}</b>: ${x.dl<0?'تجاوز موعده':'يقترب موعده (باقي '+x.dl+' يوم)'} وتقدّمه ${x.p}%. راجع الموعد أو قلّص النطاق.`));
+ if(rv.length)al.push(`${rv.length} مراجعات دراسية مستحقة. وزّعها من تبويب التخطيط ثم التنظيم.`);
+ return `<h1>المساعد الذكي</h1><div class="mu">يحلّل بياناتك المسجّلة داخل جهازك فقط بقواعد واضحة، وليس نموذجًا لغويًا.</div>
+ <div class="card" style="margin-top:12px"><div class="row" style="gap:6px"><input id="asq" placeholder="اسأل عن بياناتك…" maxlength="120" value="${esc(AS.q)}"><button class="btn sm" data-act="as:ask">اسأل</button></div><div class="tabs" style="margin-top:8px">${AQ.map(q=>`<button data-act="as:q" data-id="${esc(q)}">${esc(q)}</button>`).join('')}</div>${AS.a?`<div style="white-space:pre-wrap;margin-top:8px">${esc(AS.a)}</div>`:''}</div>
+ <h2>أولويات اليوم <span class="mu">${rk.length}</span></h2>${rk.length?rk.map((x,i)=>`<div class="card row t-${x.t.pri}"><b>${i+1}</b><div class="sp"><b>${esc(x.t.title)}</b><div class="mu">${esc(x.why.join(' • ')||'مفتوحة')}</div></div></div>`).join(''):'<div class="card empty">لا مهام مفتوحة. وقتٌ جيد للراحة أو للتخطيط.</div>'}
+ <h2>خطة مقترحة</h2><div class="modes" style="margin-bottom:8px">${[[0,'اليوم'],[1,'غدًا']].map(x=>`<button class="${AS.day===x[0]?'on':''}" data-act="as:day" data-id="${x[0]}">${x[1]}</button>`).join('')}</div>
+ <div class="card">${pl.placed.length?pl.placed.map(i=>`<div class="row" style="padding:4px 0"><span class="tag">${i.start}</span><span class="sp">${i.k==='rev'?'مراجعة: ':''}${esc(i.t)}</span><span class="mu">${i.dur} د</span></div>`).join('')+`<div class="mu" style="margin:6px 0">المدد تقديرية (المهام لا تحمل مدة). تتجنب وقت الحصص والالتزامات الثابتة. لا يُضاف شيء قبل موافقتك.</div><button class="btn w" data-act="as:ok">أضف هذه الحصص إلى الجدول</button>`:`<div class="mu">${pl.closed?'انتهى وقت الدراسة المحدد اليوم. جرّب «غدًا».':'لا عناصر أو لا وقت متاح في أوقات الدراسة المحددة.'}</div>`}${pl.skip?`<div class="mu" style="margin-top:6px;color:var(--rd)">${pl.skip} عناصر لم تجد وقتًا متاحًا.</div>`:''}</div>
+ <h2>تنبيهات <span class="mu">${al.length}</span></h2><div class="card">${al.length?al.map(x=>`<div style="padding:5px 0">• ${x}</div>`).join(''):'<div class="mu">لا مؤشرات تستدعي انتباهًا الآن حسب بياناتك المسجّلة.</div>'}</div>
+ <h2>ملخص الأسبوع</h2><div class="card"><div>أنجزتَ ${wk.done.length+wk.rcnt} مهمة، وركّزتَ ${fm(wk.fmin)}${wk.hp==null?'':'، والتزام العادات '+wk.hp+'%'}.</div><div class="mu" data-act="goTab" data-id="stats" style="margin-top:6px">التفاصيل في الإحصاءات ←</div></div>
+ <div class="card"><div class="mu">خصوصيتك: كل ما سبق يُحسب داخل جهازك ولا يُرسل إلى أي مكان. لاستشارة مساعد ذكاء اصطناعي خارجي، يمكنك نسخ ملخص مُختصر (بلا نصوص ملاحظاتك) ولصقه بنفسك.</div><button class="btn g w" data-act="as:copy">نسخ ملخص لمساعد خارجي</button></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act^="as:"]');if(!b)return;const a=b.dataset.act,id=b.dataset.id;
+ if(a==='as:ask'||a==='as:q'){const i=document.getElementById('asq');const q=a==='as:q'?id:((i&&i.value)||'');AS.q=q;AS.a=asAsk(q)||'لم أفهم سؤالك. جرّب أحد الأسئلة الجاهزة أعلاه. المساعد يجيب عن بياناتك المسجّلة بقواعد محدودة.';render()}
+ else if(a==='as:day'){AS.day=+id;render()}
+ else if(a==='as:tgl'){S.asOff=!S.asOff;save();render()}
+ else if(a==='as:ok'){const p=asPlan(AS.day);let n=0;p.placed.forEach(i=>{const t=i.k==='task'?i.t:'';if(S.sess.some(x=>x.date===p.dt&&x.start===i.start&&x.title===t&&x.subj===(i.subj||null)))return;S.sess.push({id:uid(),plan:S.curPlan,subj:i.subj||null,less:i.less||null,title:t,date:p.dt,start:i.start,dur:i.dur,rep:'none',until:null,note:'اقتراح المساعد',log:{}});n++});save();render();toast(n?'أُضيفت '+n+' حصص إلى الجدول':'الحصص موجودة مسبقًا')}
+ else if(a==='as:copy'){const t=asContext();(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('تم نسخ الملخص')).catch(()=>modal(`<h2>انسخ الملخص</h2><textarea rows="12" readonly dir="rtl" onclick="this.select()">${esc(t)}</textarea>`))}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target&&e.target.id==='asq'){e.preventDefault();const b=document.querySelector('[data-act="as:ask"]');b&&b.click()}});
 let curDay=TD();const chkDay=()=>{if(TD()!==curDay){curDay=TD();if(!$('#ov'))render()}};setInterval(chkDay,20000);document.addEventListener('visibilitychange',chkDay);
 render();
+idbInit();
 </script>
 </body>
 </html>
